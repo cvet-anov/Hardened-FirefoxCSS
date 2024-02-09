@@ -1,7 +1,53 @@
 
+
+@font-face {
+  font-family: SFMono-Regular;
+  src: local("SFMono-Regular");
+}
+
+:root
+{
+  --navbarWidth     : 40vw; /* Set width of navbar. Use px for a fixed width 
+                                or vw for a percentage of your window. */
+  --animationSpeed  : 0.5s;
+}
+#TabsToolbar {
+  margin-left : var(--navbarWidth) !important;
+}
+
+#nav-bar {
+  margin-right: calc(100vw - var(--navbarWidth)) !important;
+  padding-bottom: 2px !important;
+  -moz-appearance: -moz-mac-source-list !important;
+  background: transparent !important;
+} 
+
+#urlbar-container {
+  min-width   : 0px !important;
+}
+
+:root[uidensity="compact"] #nav-bar {
+  margin-top  : -37px !important;
+  height      : 37px !important;
+}
+
+:root:not([uidensity="compact"]):not([uidensity="touch"]) #nav-bar {
+  margin-top  : -44px !important;
+  height      : 44px !important;
+}
+
+:root[uidensity="touch"] #nav-bar {
+  margin-top  : -39px !important;
+  height      : 49px !important;
+}
+
 #main-window
 {
     background: transparent !important;
+}
+#tabbrowser-tabs:not([movingtab]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab > .tab-stack > .tab-background[selected="true"]:-moz-lwthemefi, 
+#PersonalToolbar:not(:-moz-lwtheme):-moz-window-inactive, #nav-bar:not(:-moz-lwtheme):-moz-window-inactive {
+	background: transparent !important;
 }
 
 #TabsToolbar,
@@ -18,13 +64,15 @@
 
 .tabbrowser-tab[selected="true"] .tab-label:-moz-lwtheme-brighttext
 {
-    color:white !important;
+    color:rgb(255, 0, 0) !important;
 }
 
 .tabbrowser-tab .tab-label:-moz-lwtheme-brighttext
 {
     color:rgba(255,255,255,0.7) !important;
+
 }
+
 
 
 .tabbrowser-tab[selected="true"] .tab-background:-moz-lwtheme-brighttext
@@ -47,13 +95,14 @@
 }
 
 #TabsToolbar, #nav-bar, #PersonalToolbar {
- -moz-appearance: -moz-mac-vibrancy-dark !important;
+  -moz-appearance: -moz-mac-source-list !important;
 }
 
 /* simplify tabs */
 
 #titlebar #TabsToolbar {
-	padding: 6px 0px 2px 6px !important;
+	/* padding: 6px 0px 2px 6px !important; */
+  padding-top:3px !important;
 	background: rgba(var(--accent-color), 1) !important;
 }
 .titlebar-spacer[type="pre-tabs"] {
@@ -108,21 +157,13 @@ tab[selected="true"] .tab-background {
     border-color: rgba(0,0,0, 1) !important;
 }
 
-#urlbar{
-    margin-top: 12px;
-}
 /* urlbar */
 #urlbar-background
 {
-    margin-top: 0px !important;
-    margin-bottom: 0px !important;
-
-    padding: 1px !important;
-
-    background: color:white !important;
-    box-shadow: inset 0px 0px 1px 0px #e3e3e3 !important;
-    border-radius: 30px !important;
-    border-color: #1a1a1a !important;
+    padding: 2px !important;
+    background: transparent !important;
+    color:white !important;
+    border-radius: 15px !important;
 }
 
 #urlbar:-moz-lwtheme, #navigator-toolbox #searchbar:-moz-lwtheme
@@ -139,8 +180,6 @@ tab[selected="true"] .tab-background {
 .bookmark-item:hover{
   background-color: transparent !important;
 }
-
-
 
 .bookmark-item > .toolbarbutton-icon
 {
@@ -167,7 +206,7 @@ tab[selected="true"] .tab-background {
 
 .bookmark-item:active
 {
-	color: rgba(160,160,160,0.9) !important;
+	color: rgba(241, 4, 4, 0.9)!important;
 }
 
 #tabs-newtab-button .toolbarbutton-icon {
@@ -228,33 +267,35 @@ tab[selected="true"] .tab-background {
 }
 
 tab[pending], #alltabs-popup menuitem[pending] {
-    background-color:  rgba(80, 80, 80,0.3)  !important;
+    background-color:  rgba(255, 0, 0, 0.3)  !important;
     border-radius: 30px !important;
 }
 
+/* OD TUKA GO SNEMVA */
 #navigator-toolbox:not(:hover) {
     --is-bar-visible: hidden;
     opacity: 0 !important;
-    height: 5px;
+    height: 10px;
     transition: ease-in-out, opacity 175ms ease-in-out;
-    transition-delay: 1s;
+    transition-delay: 15s;
+    -moz-appearance: -moz-mac-source-list !important;
 }
 
 #navigator-toolbox {
     position: relative;
     z-index: 1;
-    height:88px;
+    height:50px;
     overflow: var(--is-bar-visible);
 }
 
 #navigator-toolbox:hover {
-    height: 88px;
+    height: 50px;
     opacity: 1 !important;
     transition: opacity 175ms ease-in-out;
 }
 
 #navigator-toolbox:focus-within{
-    height: 90px;
+    height: 50px;
     opacity: 1 !important;
     transition: opacity 175ms ease-in-out;
     --is-bar-visible: visible;
@@ -264,12 +305,30 @@ toolbarbutton[open="true"] {
     --is-bar-visible: visible !important;
 }
 
-#titlebar #tabbrowser-tabs .tabbrowser-tab {
-    height:20px;
-    -moz-box-flex: unset !important;
-    margin-right: auto !important;
-    max-width: unset !important;
-    -moz-box-flex: 100 !important;
-    --toolbar-bgcolor: transparent !important;
-    --tab-selected-bgimage: transparent !important;
+
+
+/*================== SEARCH BAR ==================*/
+#searchbar {
+    box-shadow: inset 0px 0px 1px 0px #fb0b0b !important;
+    border-radius: 30px !important;
+    border-color: #1a1a1a !important;
 }
+
+/* Back Hide */
+#back-button/*[disabled="true"]*/ { display: none !important }
+
+/* Forward Hide */
+#forward-button/*[disabled="true"]*/ { display: none !important }
+
+/* Site information button */
+#identity-box { display: none !important }
+
+/* "Shield" icon */
+#tracking-protection-icon-container { display: none !important }
+
+#star-button-box{ display:none !important; }
+ #unified-extensions-button{list-style-image: url("/Users/filipcvetanov/Documents/New Laptop/icons/coding.png") !important; } 
+#PanelUI-menu-button{list-style-image: url("/Users/filipcvetanov/Documents/New Laptop/icons/brain.png") !important;}
+#pageAction-urlbar-_testpilot-containers{
+  display:none !important;
+} 
